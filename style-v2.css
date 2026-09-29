@@ -1,0 +1,1029 @@
+/* ==========================================================================
+   Estudio RGM — Landing Page (Estilo v2: Marfil, Verde Inglés & Oro Imperial)
+   - Encabezado (Header) y Pie (Footer): Verde Inglés señorial con acentos dorados.
+   - Todo el cuerpo del sitio (Hero, Servicios, Nosotros, Por qué elegirnos, Contacto):
+     Fondos marfil cálido de lectura relajada, títulos en Verde Inglés profundo
+     y detalles/marcos en oro fino.
+   ========================================================================== */
+
+:root {
+  /* --- Paleta Principal: Verde Inglés Tradicional & Oro --- */
+  --color-primary: #27532f;
+  /* Verde inglés base (#27532F) */
+  --color-primary-deep: #1c3c22;
+  /* Verde bosque profundo señorial */
+  --color-primary-dark: #102414;
+  /* Verde inglés nocturno */
+  --color-primary-light: #346c3d;
+  /* Verde inglés suave */
+
+  --color-secondary: #c5a059;
+  /* Oro champagne / latón noble */
+  --color-secondary-soft: #f4ecdc;
+  /* Crema dorada / marfil suave */
+  --color-gold-bright: #d4af37;
+  /* Oro clásico brillante */
+  --color-gold-gradient: linear-gradient(135deg, #dfba73 0%, #c5a059 50%, #9f7b37 100%);
+  --color-gold-gradient-hover: linear-gradient(135deg, #edd095 0%, #d4af37 50%, #b38b3f 100%);
+
+  /* --- Fondos y Neutros Marfil Cálido --- */
+  --color-bg: #faf8f5;
+  /* Fondo marfil cálido base */
+  --color-cream: #f3eee5;
+  /* Marfil contraste suave */
+  --color-surface: #ffffff;
+  /* Blanco puro para tarjetas */
+  --color-dark: #162018;
+  /* Tinta carbón para textos */
+  --color-muted: #526054;
+  /* Gris botánico para párrafos */
+  --color-footer: #0c1a0f;
+  /* Verde ultra oscuro señorial */
+
+  /* --- Tipografías --- */
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* --- Radios y Sombras --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-soft: 0 2px 6px rgba(22, 32, 24, 0.04), 0 12px 28px -16px rgba(22, 32, 24, 0.14);
+  --shadow-gold: 0 4px 20px -6px rgba(197, 160, 89, 0.45);
+  --shadow-elevation: 0 16px 36px -12px rgba(28, 60, 34, 0.16);
+
+  --container: 1140px;
+  --header-h: 76px;
+}
+
+/* ---------------------------------- Base ---------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-dark);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.18;
+  margin: 0;
+  color: var(--color-primary-deep);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary-light);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(var(--container), 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* -------------------------------- Header (Verde Inglés & Oro) ------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(22, 48, 27, 0.94);
+  /* Verde inglés traslúcido elegante */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.45);
+  /* Filete fino dorado */
+  transition: box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(16, 38, 21, 0.98);
+  border-bottom-color: rgba(197, 160, 89, 0.65);
+  box-shadow: 0 6px 24px -6px rgba(0, 0, 0, 0.4);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: #ffffff;
+}
+
+.brand:hover {
+  color: #ffffff;
+}
+
+.brand-logo {
+  width: 3rem;
+  height: 3rem;
+  flex: none;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-secondary);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+/* Tipografía del Header con borde fino dorado solicitado */
+.brand-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  color: #fbf9f5;
+  /* Borde fino dorado nítido */
+  -webkit-text-stroke: 0.45px var(--color-secondary);
+  text-shadow: 0 0 2px rgba(197, 160, 89, 0.6);
+}
+
+.brand-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  /* Subtítulo en dorado */
+}
+
+/* ------------------------------ Navegación ------------------------------ */
+
+.site-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.site-nav a {
+  display: inline-block;
+  padding: 0.5rem 0.95rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #f1ede5;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: #ffffff;
+  background: rgba(197, 160, 89, 0.18);
+}
+
+.site-nav .nav-cta {
+  color: #fcfbf9;
+  border: 1px solid var(--color-secondary);
+  background: rgba(197, 160, 89, 0.15);
+  font-weight: 600;
+}
+
+.site-nav .nav-cta:hover {
+  background: var(--color-gold-gradient);
+  color: #0d1e12;
+  border-color: transparent;
+  box-shadow: var(--shadow-gold);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: none;
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.nav-toggle-line {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-secondary);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* --------------------------------- Hero (Verde Inglés & Rombos) --------------------------------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background-color: #142a19;
+  background-image: radial-gradient(ellipse at 50% 30%, #204727 0%, #0e1e12 100%);
+  color: #f7f5f0;
+  border-bottom: 2px solid rgba(197, 160, 89, 0.4);
+}
+
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, rgba(14, 30, 18, 0.45), transparent);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  padding: clamp(4.5rem, 10vw, 7rem) 0 clamp(5rem, 10vw, 7.5rem);
+  text-align: center;
+}
+
+.hero-eyebrow {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hero-logo {
+  width: clamp(5.5rem, 13vw, 7.5rem);
+  margin: 0 auto 1.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(197, 160, 89, 0.3));
+}
+
+.hero-title {
+  margin: 0 auto 0.75rem;
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  color: #fcfbf9;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.hero-name {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero-title em {
+  display: block;
+  font-style: italic;
+  font-weight: 500;
+  color: #ede7da;
+}
+
+/* Iniciales doradas de distinción */
+.hero-title .initial {
+  color: var(--color-gold-bright);
+  background: var(--color-gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 2px 6px rgba(212, 175, 55, 0.35));
+}
+
+.hero-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+  color: #f1ebd9;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.hero-sub {
+  max-width: 34rem;
+  margin: 1.1rem auto 2.4rem;
+  color: #c9d8cc;
+  font-size: 1.05rem;
+}
+
+/* -------------------------------- Botones -------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2.1rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+/* Botón Verde Inglés para el resto del sitio */
+.btn-primary {
+  background: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--color-primary-deep);
+  box-shadow: 0 4px 16px -4px rgba(39, 83, 47, 0.4);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-deep);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -6px rgba(28, 60, 34, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* En la portada con fondo Verde Inglés, el botón resalta en Oro Imperial */
+.hero .btn-primary {
+  background: var(--color-gold-gradient);
+  color: #0f2113;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.42);
+}
+
+.hero .btn-primary:hover {
+  background: var(--color-gold-gradient-hover);
+  color: #0c1a0f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(197, 160, 89, 0.58);
+}
+
+/* ------------------------------- Secciones ------------------------------- */
+
+.section {
+  padding: clamp(4.5rem, 9vw, 6.75rem) 0;
+}
+
+.section-alt {
+  background: var(--color-cream);
+  border-top: 1px solid rgba(197, 160, 89, 0.2);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.section-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.section-title {
+  margin-top: 0.6rem;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  color: var(--color-primary-deep);
+}
+
+/* ------------------------------- Servicios ------------------------------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.65rem;
+  margin-top: 3rem;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.75rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-elevation), 0 0 10px rgba(197, 160, 89, 0.15);
+}
+
+.card-prof {
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-prof img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s ease;
+}
+
+.card-prof:hover img {
+  transform: scale(1.02);
+}
+
+.card-prof-body {
+  padding: 1.75rem 1.75rem 2rem;
+  background: var(--color-surface);
+  border-top: 2px solid var(--color-secondary);
+  /* Acento dorado divisorio */
+}
+
+.card-prof-name {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: var(--color-primary-deep);
+}
+
+.card p {
+  font-size: 0.94rem;
+  color: var(--color-muted);
+}
+
+/* -------------------------------- Nosotros ------------------------------- */
+
+.nosotros-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.nosotros-copy .lead {
+  margin-top: 1.5rem;
+  font-size: 1.08rem;
+  color: var(--color-dark);
+}
+
+.nosotros-copy>p:not(.lead) {
+  margin-top: 1rem;
+  color: var(--color-muted);
+}
+
+.values {
+  margin-top: 2rem;
+}
+
+.values li {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0 1rem 1.25rem;
+  border-left: 2px solid var(--color-secondary);
+  /* Filete dorado noble */
+  transition: border-left-color 0.2s ease, transform 0.2s ease;
+}
+
+.values li:hover {
+  border-left-color: var(--color-primary);
+  transform: translateX(3px);
+}
+
+.values li+li {
+  margin-top: 0.35rem;
+}
+
+.values strong {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  color: var(--color-primary-deep);
+}
+
+.values span {
+  font-size: 0.92rem;
+  color: var(--color-muted);
+}
+
+.nosotros-figure {
+  margin: 0;
+  position: relative;
+}
+
+/* Marco dorado refinado estilo galería */
+.nosotros-figure::after {
+  content: "";
+  position: absolute;
+  inset: 1.25rem -1.25rem -1.25rem 1.25rem;
+  border: 2px solid var(--color-secondary);
+  border-radius: var(--radius-md);
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.nosotros-figure img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-elevation);
+}
+
+/* ----------------------------- Por qué elegirnos ------------------------- */
+
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+  margin-top: 3.25rem;
+}
+
+.reason {
+  padding-top: 1.5rem;
+  border-top: 2px solid rgba(197, 160, 89, 0.4);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.reason:hover {
+  border-color: var(--color-secondary);
+  transform: translateY(-2px);
+}
+
+.reason-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  background: var(--color-secondary-soft);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.reason-icon svg {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+.reason h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  color: var(--color-primary-deep);
+}
+
+.reason p {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+/* -------------------------------- Contacto (Fondo Marfil Cálido & Acentos Dorados) ------------------------------- */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.contact-intro {
+  margin-top: 1.25rem;
+  color: var(--color-muted);
+}
+
+.contact-list {
+  margin-top: 2rem;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  color: var(--color-dark);
+}
+
+.contact-item svg {
+  flex: none;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-top: 0.2rem;
+  color: var(--color-primary);
+}
+
+.emails li {
+  font-size: 0.95rem;
+}
+
+.contact-item a {
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.contact-item a:hover {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+}
+
+/* Tarjeta del formulario de contacto */
+.contact-form {
+  background: var(--color-surface);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 2rem;
+  box-shadow: var(--shadow-elevation);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-primary-deep);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.78rem 0.95rem;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-dark);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field select {
+  cursor: pointer;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 7.25rem;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.25);
+}
+
+.form-status {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  background: #edf5ef;
+  border: 1px solid #b7d6bc;
+  font-size: 0.92rem;
+  color: #1a3820;
+}
+
+.map-wrap {
+  margin-top: 3.5rem;
+}
+
+.map-wrap iframe {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+/* -------------------------------- Footer (Verde Ultra Profundo & Oro) -------------------------------- */
+
+.site-footer {
+  background: var(--color-footer);
+  color: var(--color-cream);
+  border-top: 3px solid var(--color-secondary);
+  /* Remate dorado señorial */
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2.75rem 0;
+}
+
+.brand-footer .brand-name {
+  color: #f7f4ed;
+  -webkit-text-stroke: 0.35px var(--color-secondary);
+}
+
+.brand-footer .brand-sub {
+  color: var(--color-secondary);
+}
+
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--color-cream);
+  transition: color 0.2s ease;
+}
+
+.footer-social svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--color-secondary);
+}
+
+.footer-social:hover {
+  color: var(--color-secondary);
+}
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(244, 236, 220, 0.65);
+  border-top: 1px solid rgba(197, 160, 89, 0.25);
+  padding-top: 1.5rem;
+  margin: -0.75rem 0 0;
+}
+
+/* ----------------------------- Animaciones ----------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.cards .reveal:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.cards .reveal:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.reasons .reveal:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.reasons .reveal:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.reasons .reveal:nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+/* ------------------------------- Responsive ------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+    max-width: 34rem;
+    margin-inline: auto;
+  }
+
+  .reasons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nosotros-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nosotros-figure {
+    max-width: 30rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    background: rgba(16, 38, 21, 0.98);
+    border-bottom: 2px solid var(--color-secondary);
+    box-shadow: 0 14px 28px -10px rgba(0, 0, 0, 0.45);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  }
+
+  .site-nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  .site-nav a,
+  .site-nav .nav-cta {
+    display: block;
+    padding: 0.75rem 0.9rem;
+    font-size: 1rem;
+  }
+
+  .site-nav .nav-cta {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: clamp(2.35rem, 9.2vw, 3rem);
+    line-height: 1.16;
+  }
+
+  .hero-name--last {
+    display: block;
+    margin-top: 0.15rem;
+  }
+
+  .reasons {
+    grid-template-columns: 1fr;
+  }
+
+  .map-wrap iframe {
+    aspect-ratio: 4 / 3;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Botón flotante WhatsApp
+   ========================================================================== */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.whatsapp-fab svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.whatsapp-fab:hover,
+.whatsapp-fab:focus-visible {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6);
+  outline: none;
+}
+
+.whatsapp-fab:active {
+  transform: scale(0.97);
+}
