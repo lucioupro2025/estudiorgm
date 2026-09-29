@@ -756,10 +756,145 @@ ul {
   margin-top: 1.25rem;
   padding: 0.85rem 1rem;
   border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+}
+
+.form-status--ok {
   background: #edf5ef;
   border: 1px solid #b7d6bc;
-  font-size: 0.92rem;
   color: #1a3820;
+}
+
+.form-status--error {
+  background: #fbf0ee;
+  border: 1px solid #e0b3aa;
+  color: #7a2318;
+}
+
+.btn-primary:disabled {
+  opacity: 0.65;
+  cursor: progress;
+}
+
+.field-hint {
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.legal-doc .container {
+  max-width: 44rem;
+}
+
+.legal-doc h1 {
+  margin-bottom: 1.25rem;
+}
+
+.legal-doc h2 {
+  margin: 2.5rem 0 0.75rem;
+  font-size: 1.3rem;
+  color: var(--color-primary-deep);
+}
+
+.legal-doc p,
+.legal-doc li {
+  color: var(--color-dark);
+  line-height: 1.75;
+  margin-bottom: 0.9rem;
+}
+
+.legal-doc ul {
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.legal-doc a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.legal-updated {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(197, 160, 89, 0.3);
+  font-size: 0.88rem;
+  color: var(--color-muted);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.contact-horarios {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.contact-horarios-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.contact-horarios dl {
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.contact-horarios dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.92rem;
+}
+
+.contact-horarios dt {
+  color: var(--color-dark);
+}
+
+.contact-horarios dd {
+  margin: 0;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.field-consent {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.field-consent input {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+}
+
+.field-consent label {
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.field-consent a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .map-wrap {
