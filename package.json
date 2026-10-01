@@ -1,0 +1,14 @@
+{
+  "name": "estudio-rgm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio de Estudio Rivas Gonzalez Methol — Villa Mercedes, San Luis",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./dist/app.css --minify",
+    "build:dev": "tailwindcss -i ./src/input.css -o ./dist/app.css",
+    "watch": "tailwindcss -i ./src/input.css -o ./dist/app.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

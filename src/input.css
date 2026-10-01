@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+
+/* Todo lo custom vive en la capa `components`, que Tailwind emite antes que
+   `utilities`. Asi una utilidad del HTML (hover:shadow-xl, hover:translate-x-1,
+   group-hover:*, ...) siempre gana el empate de especificidad contra una de
+   estas clases propias. Es el mismo criterio del CDN, donde el <style> inline
+   precedia a las utilidades inyectadas. NO mover estas reglas fuera de la capa. */
+@layer components {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ============================================================
+     EFECTOS Y ANIMACIONES
+     ============================================================ */
+
+  /* Scroll reveal con curvas cubic-bezier de alta gama */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Retardos escalonados para efecto cascada en grids */
+  .stagger-1 { transition-delay: 0.08s; }
+  .stagger-2 { transition-delay: 0.16s; }
+  .stagger-3 { transition-delay: 0.24s; }
+  .stagger-4 { transition-delay: 0.32s; }
+  .stagger-5 { transition-delay: 0.40s; }
+  .stagger-6 { transition-delay: 0.48s; }
+
+  /* Micro-interaccion: elevacion refinada y sombra calida */
+  .card-interactive {
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.35s ease;
+  }
+
+  .card-interactive:hover {
+    transform: translateY(-5px);
+    box-shadow:
+      0 18px 32px -8px rgba(111, 88, 60, 0.15),
+      0 4px 12px -2px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Brillo shimmer en botones de accion */
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      background-color 0.3s ease;
+  }
+
+  .btn-shimmer::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -90%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.32) 50%,
+      transparent 100%
+    );
+    transform: rotate(25deg);
+    transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+
+  .btn-shimmer:hover::after {
+    left: 140%;
+  }
+
+  .btn-shimmer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -4px rgba(111, 88, 60, 0.35);
+  }
+
+  .btn-shimmer:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Movimiento flotante sutil en insignias */
+  @keyframes floatGentle {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  .animate-float {
+    animation: floatGentle 4.5s ease-in-out infinite;
+  }
+
+  /* Aura ambiental de fondo */
+  @keyframes ambientDrift {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.28;
+    }
+    50% {
+      transform: translate(-14px, 12px) scale(1.06);
+      opacity: 0.42;
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.28;
+    }
+  }
+
+  .animate-ambient {
+    animation: ambientDrift 8s ease-in-out infinite;
+  }
+
+  /* Pulso organico en boton de WhatsApp */
+  @keyframes waRipple {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.75;
+    }
+    50% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+  }
+
+  .wa-pulse-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 9999px;
+    background: rgba(37, 211, 102, 0.45);
+    z-index: 0;
+    animation: waRipple 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    pointer-events: none;
+  }
+
+  /* ============================================================
+     FORMULARIOS: CAMPOS CLARAMENTE DELIMITADOS
+     Fondo blanco sobre tarjeta calida, borde visible y anillo
+     de foco en el cafe corporativo. WCAG AA.
+     ============================================================ */
+  .field-input {
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
+    color: #0f172a;
+    padding: 12px 16px;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .field-input::placeholder {
+    color: #64748b;
+    opacity: 1;
+  }
+
+  .field-input:hover {
+    border-color: #94a3b8;
+  }
+
+  .field-input:focus {
+    outline: none;
+    border-color: #6f583c;
+    box-shadow: 0 0 0 3px rgba(111, 88, 60, 0.18);
+  }
+
+  .field-label {
+    color: #334155;
+    font-weight: 600;
+  }
+
+  /* Tarjeta del formulario: gris neutro ultraligero para separar del fondo */
+  .form-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.05),
+      0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  }
+
+  /* ============================================================
+     INICIALES DORADAS DEL H1 (R / G / M)
+     Gradiente metallico + grano + bisel calido.
+     Sin text-stroke: el contorno oscuro resta definicion.
+     ============================================================ */
+  .gold-initial {
+    font-weight: 600;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='96' height='96' filter='url(%23g)' opacity='0.35'/%3E%3C/svg%3E"),
+      linear-gradient(
+        178deg,
+        #fff3bd 0%,
+        #e3c070 26%,
+        #9a7329 49%,
+        #c9a457 53%,
+        #edcf8b 76%,
+        #a87f33 100%
+      );
+    background-blend-mode: overlay;
+    background-size: 96px 96px, auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter:
+      drop-shadow(0 1.5px 0 rgba(150, 112, 40, 0.45))
+      drop-shadow(0 3px 5px rgba(80, 58, 22, 0.12));
+  }
+
+  /* Transicion sutil del header al scrollear */
+  header {
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  header.is-scrolled {
+    border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.07);
+  }
+
+  /* ============================================================
+     ACCESIBILIDAD: REDUCCION DE MOVIMIENTO
+     ============================================================ */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .reveal-on-scroll {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    .animate-float,
+    .animate-ambient,
+    .wa-pulse-ring,
+    .btn-shimmer::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+@tailwind utilities;

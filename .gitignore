@@ -6,3 +6,9 @@ update.py
 index.original.html
 stitch_design/
 *.zip
+
+# Dependencias de Tailwind (se reinstalan con npm install)
+node_modules/
+
+# dist/app.css NO se ignora a proposito: es un sitio estatico sin CI,
+# asi que el CSS compilado tiene que quedar versionado para poder publicar.
