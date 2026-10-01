@@ -186,6 +186,19 @@
       pointer-events: none;
     }
 
+    .gold-initial {
+      font-weight: 600;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='96' height='96' filter='url(%23g)' opacity='0.35'/%3E%3C/svg%3E"),
+        linear-gradient(178deg, #fff3bd 0%, #e3c070 26%, #9a7329 49%, #c9a457 53%, #edcf8b 76%, #a87f33 100%);
+      background-blend-mode: overlay;
+      background-size: 96px 96px, auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 1.5px 0 rgba(150, 112, 40, 0.45)) drop-shadow(0 3px 5px rgba(80, 58, 22, 0.12));
+    }
+
     /* Transición sutil del header al scrollear */
     header {
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -217,7 +230,7 @@
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <script
-    id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface-variant": "#4e453c", "on-primary-container": "#fffbff", "secondary-fixed": "#dee2ec", "surface-tint": "#715a3e", "outline-variant": "#d1c4b9", "error-container": "#ffdad6", "secondary-fixed-dim": "#c2c7d0", "primary-container": "#897052", "on-primary": "#ffffff", "on-tertiary": "#ffffff", "secondary": "#5a5f67", "surface-variant": "#e4e2de", "outline": "#7f756b", "on-surface": "#1b1c1a", "on-error": "#ffffff", "surface": "#fbf9f5", "on-secondary-container": "#60656d", "on-tertiary-fixed": "#271905", "secondary-container": "#dee2ec", "on-error-container": "#93000a", "tertiary-fixed": "#fadebe", "tertiary": "#6d593f", "surface-container-lowest": "#ffffff", "primary-fixed": "#fdddb9", "surface-dim": "#dbdad6", "primary": "#6f583c", "background": "#fbf9f5", "primary-fixed-dim": "#e0c29f", "inverse-primary": "#e0c29f", "surface-container-high": "#eae8e4", "surface-bright": "#fbf9f5", "inverse-surface": "#30312e", "on-background": "#1b1c1a", "tertiary-container": "#877156", "on-tertiary-container": "#fffbff", "on-primary-fixed": "#281803", "inverse-on-surface": "#f2f0ed", "error": "#ba1a1a", "on-secondary": "#ffffff", "surface-container": "#efeeea", "surface-container-highest": "#e4e2de", "on-tertiary-fixed-variant": "#56442c", "on-secondary-fixed": "#171c23", "on-primary-fixed-variant": "#584329", "tertiary-fixed-dim": "#ddc2a3", "surface-container-low": "#f5f3ef", "on-secondary-fixed-variant": "#42474f" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-sm": "0.5rem", "margin-mobile": "1.25rem", "space-xl": "2.5rem", "gutter-mobile": "1rem", "space-xs": "0.25rem", "margin": "3rem", "gutter": "1.5rem", "space-md": "1rem", "space-lg": "1.5rem" }, "fontFamily": { "title-lg": ["Plus Jakarta Sans"], "headline-md": ["Playfair Display"], "headline-sm": ["Playfair Display"], "headline-lg-mobile": ["Playfair Display"], "body-md": ["Plus Jakarta Sans"], "title-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-lg": ["Playfair Display"], "display-lg": ["Playfair Display"], "display-lg-mobile": ["Playfair Display"], "label-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"] }, "fontSize": { "title-lg": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "500" }], "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "0", "fontWeight": "500" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "label-md": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }], "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-lg": ["13px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }] } } } }</script>
+    id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface-variant": "#4e453c", "on-primary-container": "#fffbff", "secondary-fixed": "#dee2ec", "surface-tint": "#715a3e", "outline-variant": "#d1c4b9", "error-container": "#ffdad6", "secondary-fixed-dim": "#c2c7d0", "primary-container": "#897052", "on-primary": "#ffffff", "on-tertiary": "#ffffff", "secondary": "#5a5f67", "surface-variant": "#e4e2de", "outline": "#7f756b", "on-surface": "#1b1c1a", "on-error": "#ffffff", "surface": "#fbf9f5", "on-secondary-container": "#60656d", "on-tertiary-fixed": "#271905", "secondary-container": "#dee2ec", "on-error-container": "#93000a", "tertiary-fixed": "#fadebe", "tertiary": "#6d593f", "surface-container-lowest": "#ffffff", "primary-fixed": "#fdddb9", "surface-dim": "#dbdad6", "primary": "#6f583c", "cta": "#9B933B", "cta-hover": "#847D32", "background": "#fbf9f5", "primary-fixed-dim": "#e0c29f", "inverse-primary": "#e0c29f", "surface-container-high": "#eae8e4", "surface-bright": "#fbf9f5", "inverse-surface": "#30312e", "on-background": "#1b1c1a", "tertiary-container": "#877156", "on-tertiary-container": "#fffbff", "on-primary-fixed": "#281803", "inverse-on-surface": "#f2f0ed", "error": "#ba1a1a", "on-secondary": "#ffffff", "surface-container": "#efeeea", "surface-container-highest": "#e4e2de", "on-tertiary-fixed-variant": "#56442c", "on-secondary-fixed": "#171c23", "on-primary-fixed-variant": "#584329", "tertiary-fixed-dim": "#ddc2a3", "surface-container-low": "#f5f3ef", "on-secondary-fixed-variant": "#42474f" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-sm": "0.5rem", "margin-mobile": "1.25rem", "space-xl": "2.5rem", "gutter-mobile": "1rem", "space-xs": "0.25rem", "margin": "3rem", "gutter": "1.5rem", "space-md": "1rem", "space-lg": "1.5rem" }, "fontFamily": { "title-lg": ["Plus Jakarta Sans"], "headline-md": ["Playfair Display"], "headline-sm": ["Playfair Display"], "headline-lg-mobile": ["Playfair Display"], "body-md": ["Plus Jakarta Sans"], "title-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-lg": ["Playfair Display"], "display-lg": ["Playfair Display"], "display-lg-mobile": ["Playfair Display"], "label-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"] }, "fontSize": { "title-lg": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "500" }], "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "0", "fontWeight": "500" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "label-md": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }], "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-lg": ["13px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }] } } } }</script>
 </head>
 
 <body class="bg-surface font-body-md text-on-surface antialiased">
@@ -231,9 +244,9 @@
             Jurídico</span></div>
       </div>
       <nav class="hidden lg:flex items-center gap-space-lg"
-        data-active-classes="bg-primary-container text-on-primary-container font-title-md rounded-lg"><a
+        data-active-classes="bg-cta text-[#1b1c1a] font-title-md rounded-lg"><a
           aria-current="page"
-          class="px-space-md py-space-sm uppercase tracking-wider transition-colors bg-primary-container text-on-primary-container font-title-md rounded-lg"
+          class="px-space-md py-space-sm uppercase tracking-wider transition-colors bg-cta text-[#1b1c1a] font-title-md rounded-lg"
           href="#inicio">Inicio</a><a
           class="px-space-md py-space-sm font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors"
           href="#areas-practica">Áreas de Práctica</a><a
@@ -264,9 +277,9 @@
   <main class="w-full pt-20 bg-surface">
     <div class="flex flex-col w-full">
       <!-- HERO SECTION: Editorial Prestige Layout -->
-      <section class="relative w-full overflow-hidden bg-surface py-space-xl lg:py-20" id="inicio">
+      <section class="relative w-full overflow-hidden bg-surface-container py-space-xl lg:py-20" id="inicio">
         <div
-          class="absolute -top-32 right-0 w-[580px] h-[580px] rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none -z-0 animate-ambient">
+          class="absolute -top-32 right-0 w-[580px] h-[580px] rounded-full bg-cta/30 blur-3xl pointer-events-none -z-0 animate-ambient">
         </div>
         <div
           class="absolute bottom-0 left-10 w-[420px] h-[420px] rounded-full bg-surface-container-high/60 blur-2xl pointer-events-none -z-0 animate-ambient" style="animation-delay: -4s;">
@@ -279,8 +292,11 @@
                 <span class="w-6 h-px bg-primary"></span>
                 <span class="font-label-lg text-label-lg uppercase tracking-widest text-primary">Servicio contable, jurídico y previsional integrado</span>
               </div>
-              <h1 class="font-display-lg text-display-lg text-on-surface mb-space-lg leading-tight tracking-tight">
-                Rivas González Methol
+              <h1
+                class="font-display-lg text-display-lg mb-space-lg leading-tight tracking-tight bg-clip-text text-transparent bg-[linear-gradient(225deg,#dfba73_0%,#c5a059_50%,#9f7b37_100%)]"><span
+                  class="text-[1.15em] gold-initial">R</span>ivas <span
+                  class="text-[1.15em] gold-initial">G</span>onzález <span
+                  class="text-[1.15em] gold-initial">M</span>ethol
               </h1>
               <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-space-xl">
                 Compromiso, confianza y atención personalizada. Cuidamos tu patrimonio y tus derechos con un servicio
@@ -288,7 +304,7 @@
               </p>
               <!-- Dual CTAs -->
               <div class="flex flex-wrap items-center gap-space-md mb-space-xl">
-                <a class="inline-flex items-center justify-center px-space-lg py-space-md rounded-lg bg-primary text-on-primary font-title-md text-title-md shadow-md hover:bg-tertiary transition-all duration-300 btn-shimmer"
+                <a class="inline-flex items-center justify-center px-space-lg py-space-md rounded-lg bg-cta text-[#1b1c1a] font-title-md text-title-md shadow-md hover:bg-cta-hover transition-all duration-300 btn-shimmer"
                   href="contacto.html">
                   <span>Solicitar Primera Consulta</span>
                   <span class="material-symbols-outlined ml-space-sm text-[20px]">arrow_forward</span>
@@ -310,7 +326,7 @@
                     <span class="material-symbols-outlined text-[18px]">gavel</span>
                   </div>
                   <div
-                    class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary shadow-sm ring-2 ring-surface">
+                    class="w-10 h-10 rounded-full bg-cta flex items-center justify-center text-[#1b1c1a] shadow-sm ring-2 ring-surface">
                     <span class="material-symbols-outlined text-[18px]">query_stats</span>
                   </div>
                 </div>
@@ -507,7 +523,7 @@
                 </div>
               </div>
               <div class="pt-space-md">
-                <a class="w-full inline-flex items-center justify-center px-space-md py-space-sm rounded-lg bg-primary-fixed text-on-primary-fixed font-title-md text-title-md hover:bg-surface-bright transition-colors btn-shimmer"
+                <a class="w-full inline-flex items-center justify-center px-space-md py-space-sm rounded-lg bg-cta text-[#1b1c1a] font-title-md text-title-md hover:bg-cta-hover transition-colors btn-shimmer"
                   href="contacto.html">
                   <span>Agendar Consulta</span>
                 </a>
@@ -577,7 +593,7 @@
               <div>
                 <div class="flex items-center justify-between mb-space-md">
                   <span
-                    class="px-space-sm py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md uppercase">Área
+                    class="px-space-sm py-1 rounded bg-cta text-[#1b1c1a] font-label-md text-label-md uppercase">Área
                     Contable</span>
                   <span class="font-title-md text-title-md text-outline">02</span>
                 </div>
@@ -602,7 +618,7 @@
               <div>
                 <div class="flex items-center justify-between mb-space-md">
                   <span
-                    class="px-space-sm py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md uppercase">Área
+                    class="px-space-sm py-1 rounded bg-cta text-[#1b1c1a] font-label-md text-label-md uppercase">Área
                     Previsional</span>
                   <span class="font-title-md text-title-md text-outline">03</span>
                 </div>
@@ -627,7 +643,7 @@
               <div>
                 <div class="flex items-center justify-between mb-space-md">
                   <span
-                    class="px-space-sm py-1 rounded bg-secondary-container text-on-secondary-container font-label-md text-label-md uppercase">Área
+                    class="px-space-sm py-1 rounded bg-cta text-[#1b1c1a] font-label-md text-label-md uppercase">Área
                     Jurídica</span>
                   <span class="font-title-md text-title-md text-outline">04</span>
                 </div>
@@ -825,7 +841,7 @@
                 legal de forma clara y confidencial.
               </p>
               <div class="flex flex-wrap items-center gap-space-md">
-                <a class="inline-flex items-center justify-center px-space-xl py-space-md rounded-lg bg-primary text-on-primary font-title-md text-title-md shadow-lg hover:bg-tertiary transition-all duration-300 btn-shimmer"
+                <a class="inline-flex items-center justify-center px-space-xl py-space-md rounded-lg bg-cta text-[#1b1c1a] font-title-md text-title-md shadow-lg hover:bg-cta-hover transition-all duration-300 btn-shimmer"
                   href="contacto.html">
                   <span>Coordinar Consulta</span>
                   <span class="material-symbols-outlined ml-space-sm text-[20px]">calendar_today</span>
@@ -837,7 +853,7 @@
                 </a>
               </div>
               <div class="mt-space-lg flex items-center gap-space-md text-surface-variant font-body-sm text-body-sm">
-                <span class="inline-block w-2 h-2 rounded-full bg-primary-fixed"></span>
+                <span class="inline-block w-2 h-2 rounded-full bg-cta"></span>
                 <span>Respuesta rápida y atención personalizada bajo estricta reserva.</span>
               </div>
             </div>
@@ -845,16 +861,16 @@
         </div>
       </section>
       <section class="w-full max-w-[1320px] mx-auto px-gutter-mobile md:px-margin py-space-xl" id="equipo">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl reveal-on-scroll">
-          <div>
-            <div class="inline-flex items-center gap-space-xs text-primary mb-space-xs">
-              <span class="material-symbols-outlined text-[18px]">gavel</span>
-              <span class="font-label-md text-label-md uppercase tracking-widest">Equipo Profesional</span>
-            </div>
-            <h2 class="font-headline-lg text-headline-lg text-on-surface font-serif">Socias Fundadoras</h2>
+        <div class="max-w-3xl mb-space-xl reveal-on-scroll">
+          <div class="inline-flex items-center gap-space-xs text-primary mb-space-xs">
+            <span class="material-symbols-outlined text-[18px]">gavel</span>
+            <span class="font-label-md text-label-md uppercase tracking-widest">Equipo Profesional</span>
           </div>
-          <p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-space-sm md:mt-0">
-            Atención directa e involucramiento personalizado en cada consulta y gestión.
+          <h2 class="font-headline-lg text-headline-lg text-on-surface font-serif">Un equipo interdisciplinario que te
+            guía en cada paso</h2>
+          <p class="font-body-md text-body-md text-on-surface-variant mt-space-md">
+            Unimos el derecho, la contabilidad y la fiscalidad para acompañarte con una atención personalizada y
+            estratégica. Atención directa e involucramiento personalizado en cada consulta y gestión.
           </p>
         </div>
         <!-- 3 Partner Cards -->
@@ -880,12 +896,16 @@
                 <div class="flex items-baseline justify-between mb-space-xs">
                   <h3 class="font-headline-sm text-headline-sm text-on-surface">Dra. Rivas</h3>
                 </div>
-                <p class="font-title-md text-title-md text-primary mb-space-md">Socia Directora · Derecho Previsional y
+                <p class="font-title-md text-title-md text-primary mb-space-md">Derecho Previsional y
                   Jurídico</p>
                 <p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
                   Especialista en consultoría legal y derecho previsional. Lidera el área de revisión de descuentos de
                   Impuesto a las Ganancias sobre haberes jubilatorios, cese de retenciones, devoluciones y reclamos
                   retroactivos.
+                </p>
+                <p
+                  class="font-body-sm text-primary font-medium border-t border-outline-variant/40 pt-space-sm mb-space-md">
+                  Trabaja de forma coordinada con el área contable y tributaria para blindar tu patrimonio.
                 </p>
                 <!-- Credenciales -->
                 <div class="bg-surface-container-low p-space-md rounded-lg mb-space-md flex flex-col gap-space-xs">
@@ -948,20 +968,30 @@
               </div>
               <div class="p-space-lg">
                 <div class="flex items-baseline justify-between mb-space-xs">
-                  <h3 class="font-headline-sm text-headline-sm text-on-surface">Cra. González</h3>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface">María Eugenia González</h3>
                 </div>
-                <p class="font-title-md text-title-md text-primary mb-space-md">Socia Directora · Contabilidad y
+                <p class="font-title-md text-title-md text-primary mb-space-md">Contabilidad y
                   Liquidaciones</p>
                 <p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
-                  Especialista en contabilidad comercial, confección de balances y liquidaciones periódicas. Enfocada en
-                  brindar claridad financiera para la toma de decisiones estratégicas en PyMEs y profesionales.
+                  Especialista en contabilidad comercial, asesoramiento y liquidación de impuestos, monotributo,
+                  confección de balances y liquidaciones periódicas. Enfocada en brindar claridad financiera para la
+                  toma de decisiones estratégicas en PyMEs y profesionales.
+                </p>
+                <p
+                  class="font-body-sm text-primary font-medium border-t border-outline-variant/40 pt-space-sm mb-space-md">
+                  Trabaja de forma coordinada con el área jurídica y tributaria para blindar tu patrimonio.
                 </p>
                 <!-- Credenciales -->
                 <div class="bg-surface-container-low p-space-md rounded-lg mb-space-md flex flex-col gap-space-xs">
                   <div class="flex items-start gap-space-xs">
                     <span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">school</span>
-                    <span class="font-body-sm text-body-sm text-on-surface">Contadora Pública · Matriculada en el
-                      CPCESL</span>
+                    <span class="font-body-sm text-body-sm text-on-surface">Contador Público Nacional · CPCESL Mat. Nº
+                      1856</span>
+                  </div>
+                  <div class="flex items-start gap-space-xs">
+                    <span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">menu_book</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">Universidad Nacional de San
+                      Luis</span>
                   </div>
                   <div class="flex items-start gap-space-xs">
                     <span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">badge</span>
@@ -974,6 +1004,10 @@
                   <span
                     class="px-space-xs py-0.5 bg-surface-container text-on-surface-variant font-label-md text-label-md rounded">Contabilidad
                     General</span>
+                  <span
+                    class="px-space-xs py-0.5 bg-surface-container text-on-surface-variant font-label-md text-label-md rounded">Impuestos</span>
+                  <span
+                    class="px-space-xs py-0.5 bg-surface-container text-on-surface-variant font-label-md text-label-md rounded">Monotributo</span>
                   <span
                     class="px-space-xs py-0.5 bg-surface-container text-on-surface-variant font-label-md text-label-md rounded">Balances
                     Comerciales</span>
@@ -1019,11 +1053,15 @@
                 <div class="flex items-baseline justify-between mb-space-xs">
                   <h3 class="font-headline-sm text-headline-sm text-on-surface">Cra. Methol</h3>
                 </div>
-                <p class="font-title-md text-title-md text-primary mb-space-md">Socia Directora · Impuestos y
+                <p class="font-title-md text-title-md text-primary mb-space-md">Impuestos y
                   Asesoramiento Fiscal</p>
                 <p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
                   Especialista en normativa fiscal nacional y provincial. Acompaña a contribuyentes desde la correcta
                   inscripción y encuadre inicial en ARCA (ex AFIP) hasta el cumplimiento regular de sus obligaciones.
+                </p>
+                <p
+                  class="font-body-sm text-primary font-medium border-t border-outline-variant/40 pt-space-sm mb-space-md">
+                  Trabaja de forma coordinada con el área contable y jurídica para blindar tu patrimonio.
                 </p>
                 <!-- Credenciales -->
                 <div class="bg-surface-container-low p-space-md rounded-lg mb-space-md flex flex-col gap-space-xs">
@@ -1188,7 +1226,7 @@
             </p>
           </div>
           <div class="flex flex-col sm:flex-row items-center gap-space-md shrink-0 relative z-10 w-full sm:w-auto">
-            <a class="w-full sm:w-auto px-space-xl py-space-md rounded-lg bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-wider text-center hover:bg-primary-container transition-colors shadow-sm btn-shimmer"
+            <a class="w-full sm:w-auto px-space-xl py-space-md rounded-lg bg-cta text-[#1b1c1a] font-label-lg text-label-lg uppercase tracking-wider text-center hover:bg-cta-hover transition-colors shadow-sm btn-shimmer"
               href="contacto.html">
               Solicitar Consulta
             </a>
@@ -1440,7 +1478,7 @@
               Mercedes, San
               Luis</span>
           </div><a aria-label="Instagram de Rivas González Methol"
-            class="inline-flex items-center gap-space-xs w-fit px-space-md py-space-sm rounded-full bg-primary-container text-on-primary-container hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors"
+            class="inline-flex items-center gap-space-xs w-fit px-space-md py-space-sm rounded-full bg-primary-container text-on-primary-container hover:bg-cta hover:text-[#1b1c1a] transition-colors"
             href="https://www.instagram.com/estudio.rgm" target="_blank" rel="noopener noreferrer"><span
               class="material-symbols-outlined text-[18px]">photo_camera</span><span
               class="font-body-sm text-body-sm">@estudio.rgm</span></a>
@@ -1609,6 +1647,55 @@
         window.addEventListener('scroll', checkScroll, { passive: true });
         checkScroll();
       }
+    })();
+  </script>
+  <script>
+    (function () {
+      "use strict";
+
+      var nav = document.querySelector('nav[data-active-classes]');
+      if (!nav) return;
+
+      var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+      if (!links.length) return;
+
+      var activeClasses = (nav.getAttribute('data-active-classes') || '').split(/\s+/).filter(Boolean);
+      var inactiveClasses = ['font-label-lg', 'text-label-lg', 'text-on-surface-variant', 'hover:text-on-surface'];
+      var sections = links.map(function (link) {
+        return document.querySelector(link.getAttribute('href'));
+      });
+      var lockTimer = null;
+
+      function setActive(index) {
+        links.forEach(function (link, i) {
+          var on = i === index;
+          activeClasses.forEach(function (c) { link.classList.toggle(c, on); });
+          inactiveClasses.forEach(function (c) { link.classList.toggle(c, !on); });
+          if (on) link.setAttribute('aria-current', 'page');
+          else link.removeAttribute('aria-current');
+        });
+      }
+
+      function update() {
+        var current = 0;
+        sections.forEach(function (section, i) {
+          if (section && section.getBoundingClientRect().top <= 140) current = i;
+        });
+        setActive(current);
+      }
+
+      links.forEach(function (link, i) {
+        link.addEventListener('click', function () {
+          setActive(i);
+          clearTimeout(lockTimer);
+          lockTimer = setTimeout(function () { lockTimer = null; update(); }, 1500);
+        });
+      });
+      window.addEventListener('scroll', function () {
+        if (!lockTimer) update();
+      }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
     })();
   </script>
 </body>
