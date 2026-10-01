@@ -28,6 +28,10 @@
         padding: 0;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         overscroll-behavior: none;
       }
@@ -43,6 +47,172 @@
 
     ::-webkit-scrollbar {
       display: none;
+    }
+
+    /* ============================================================
+       EFECTOS Y ANIMACIONES ELEGANTES — ESTUDIO RGM
+       ============================================================ */
+
+    /* Scroll Reveal con curvas cubic-bezier de alta gama */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Retardos escalonados para efecto cascada en grids */
+    .stagger-1 { transition-delay: 0.08s; }
+    .stagger-2 { transition-delay: 0.16s; }
+    .stagger-3 { transition-delay: 0.24s; }
+    .stagger-4 { transition-delay: 0.32s; }
+    .stagger-5 { transition-delay: 0.40s; }
+    .stagger-6 { transition-delay: 0.48s; }
+
+    /* Micro-interacción: Elevación refinada y sombra cálida en tarjetas */
+    .card-interactive {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.35s ease;
+    }
+
+    .card-interactive:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 32px -8px rgba(111, 88, 60, 0.15),
+                  0 4px 12px -2px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Brillo Shimmer en Botones de Acción (CTA) */
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease;
+    }
+
+    .btn-shimmer::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -90%;
+      width: 50%;
+      height: 200%;
+      background: linear-gradient(
+        105deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.32) 50%,
+        transparent 100%
+      );
+      transform: rotate(25deg);
+      transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .btn-shimmer:hover::after {
+      left: 140%;
+    }
+
+    .btn-shimmer:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -4px rgba(111, 88, 60, 0.35);
+    }
+
+    .btn-shimmer:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* Movimiento flotante sutil en insignias del Hero */
+    @keyframes floatGentle {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    .animate-float {
+      animation: floatGentle 4.5s ease-in-out infinite;
+    }
+
+    /* Aura ambiental de fondo en el Hero */
+    @keyframes ambientDrift {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.28;
+      }
+      50% {
+        transform: translate(-14px, 12px) scale(1.06);
+        opacity: 0.42;
+      }
+      100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.28;
+      }
+    }
+
+    .animate-ambient {
+      animation: ambientDrift 8s ease-in-out infinite;
+    }
+
+    /* Efecto pulso orgánico en botón de WhatsApp */
+    @keyframes waRipple {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.75;
+      }
+      50% {
+        transform: scale(1.3);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    .wa-pulse-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      background: rgba(37, 211, 102, 0.45);
+      z-index: 0;
+      animation: waRipple 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+      pointer-events: none;
+    }
+
+    /* Transición sutil del header al scrollear */
+    header {
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    header.is-scrolled {
+      border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.07);
+    }
+
+    /* Accesibilidad: Reducción de movimiento */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .animate-float,
+      .animate-ambient,
+      .wa-pulse-ring,
+      .btn-shimmer::after {
+        animation: none !important;
+        transition: none !important;
+      }
     }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -72,7 +242,7 @@
           class="px-space-md py-space-sm font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors"
           href="#contacto">Contacto</a></nav>
       <div class="flex items-center gap-space-md"><a
-          class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-sm rounded-lg bg-inverse-surface text-inverse-on-surface font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors"
+          class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-sm rounded-lg bg-inverse-surface text-inverse-on-surface font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors btn-shimmer"
           href="#contacto">Agendar Consulta</a><button aria-expanded="false" aria-label="Abrir menú"
           class="lg:hidden w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary"
           id="menuToggle" type="button"><span class="material-symbols-outlined text-[22px]">menu</span></button></div>
@@ -87,7 +257,7 @@
           href="#equipo">Nuestro Equipo</a><a
           class="px-space-md py-space-sm rounded-lg font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"
           href="#contacto">Contacto</a><a
-          class="mt-space-sm w-full inline-flex items-center justify-center px-space-lg py-space-sm rounded-lg bg-inverse-surface text-inverse-on-surface font-label-lg text-label-lg uppercase tracking-wider"
+          class="mt-space-sm w-full inline-flex items-center justify-center px-space-lg py-space-sm rounded-lg bg-inverse-surface text-inverse-on-surface font-label-lg text-label-lg uppercase tracking-wider btn-shimmer"
           href="#contacto">Agendar Consulta</a></nav>
     </div>
   </header>
@@ -96,15 +266,15 @@
       <!-- HERO SECTION: Editorial Prestige Layout -->
       <section class="relative w-full overflow-hidden bg-surface py-space-xl lg:py-20" id="inicio">
         <div
-          class="absolute -top-32 right-0 w-[580px] h-[580px] rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none -z-0">
+          class="absolute -top-32 right-0 w-[580px] h-[580px] rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none -z-0 animate-ambient">
         </div>
         <div
-          class="absolute bottom-0 left-10 w-[420px] h-[420px] rounded-full bg-surface-container-high/60 blur-2xl pointer-events-none -z-0">
+          class="absolute bottom-0 left-10 w-[420px] h-[420px] rounded-full bg-surface-container-high/60 blur-2xl pointer-events-none -z-0 animate-ambient" style="animation-delay: -4s;">
         </div>
         <div class="max-w-[1320px] mx-auto px-gutter-mobile md:px-margin relative z-10">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
             <!-- Left Column: Typographic Focus & Mission Statement -->
-            <div class="lg:col-span-7 flex flex-col">
+            <div class="lg:col-span-7 flex flex-col reveal-on-scroll">
               <div class="inline-flex items-center gap-space-sm mb-space-md">
                 <span class="w-6 h-px bg-primary"></span>
                 <span class="font-label-lg text-label-lg uppercase tracking-widest text-primary">Servicio contable, jurídico y previsional integrado</span>
@@ -118,7 +288,7 @@
               </p>
               <!-- Dual CTAs -->
               <div class="flex flex-wrap items-center gap-space-md mb-space-xl">
-                <a class="inline-flex items-center justify-center px-space-lg py-space-md rounded-lg bg-primary text-on-primary font-title-md text-title-md shadow-md hover:bg-tertiary transition-all duration-300"
+                <a class="inline-flex items-center justify-center px-space-lg py-space-md rounded-lg bg-primary text-on-primary font-title-md text-title-md shadow-md hover:bg-tertiary transition-all duration-300 btn-shimmer"
                   href="contacto.html">
                   <span>Solicitar Primera Consulta</span>
                   <span class="material-symbols-outlined ml-space-sm text-[20px]">arrow_forward</span>
@@ -153,7 +323,7 @@
               </div>
             </div>
             <!-- Right Column: Editorial Visual & Accents -->
-            <div class="lg:col-span-5 relative mt-space-lg lg:mt-0">
+            <div class="lg:col-span-5 relative mt-space-lg lg:mt-0 reveal-on-scroll stagger-2">
               <div class="relative rounded-xl overflow-hidden shadow-2xl bg-surface-container-low aspect-[4/5]">
                 <img class="w-full h-full object-cover"
                   alt="Equipo profesional del Estudio Rivas González Methol"
@@ -178,7 +348,7 @@
               </div>
               <!-- Asymmetric Accent Tile -->
               <div
-                class="hidden xl:flex absolute -top-6 -left-8 p-space-md rounded-lg bg-surface-container-lowest shadow-xl flex-col gap-1 z-20">
+                class="hidden xl:flex absolute -top-6 -left-8 p-space-md rounded-lg bg-surface-container-lowest shadow-xl flex-col gap-1 z-20 animate-float">
                 <span class="font-label-md text-label-md uppercase tracking-widest text-primary">Asistencia
                   Integral</span>
                 <div class="flex items-center gap-1 text-primary">
@@ -191,7 +361,7 @@
                   <span class="material-symbols-outlined text-[16px]"
                     style="font-variation-settings: 'FILL' 1;">star</span>
                   <span class="material-symbols-outlined text-[16px]"
-                    style="font-variation-settings: 'FILL' 1;">star</span>
+                    style="font-variation-edits: 'FILL' 1;">star</span>
                 </div>
                 <span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Compromiso y
                   Confianza</span>
@@ -200,37 +370,37 @@
           </div>
           <!-- Trust Metrics Bar -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg mt-space-xl pt-space-xl">
-            <div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+            <div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between reveal-on-scroll stagger-1 card-interactive">
               <div class="flex items-center justify-between mb-space-sm">
                 <span class="font-label-md text-label-md uppercase tracking-wider text-primary">Trayectoria
                   Profesional</span>
                 <span class="material-symbols-outlined text-primary text-[24px]">history_edu</span>
               </div>
-              <span class="font-display-lg text-display-lg text-on-surface tracking-tight">+15</span>
+              <span class="font-display-lg text-display-lg text-on-surface tracking-tight" data-counter="15" data-prefix="+">+15</span>
               <span class="font-title-md text-title-md text-on-surface mb-space-xs">Años de Experiencia Contable y
                 Jurídica</span>
               <p class="font-body-sm text-body-sm text-on-surface-variant">Acompañando a trabajadores, jubilados,
                 comercios y PyMEs con soluciones a medida.</p>
             </div>
-            <div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+            <div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between reveal-on-scroll stagger-2 card-interactive">
               <div class="flex items-center justify-between mb-space-sm">
                 <span class="font-label-md text-label-md uppercase tracking-wider text-primary">Respuesta y
                   Claridad</span>
                 <span class="material-symbols-outlined text-primary text-[24px]">balance</span>
               </div>
-              <span class="font-display-lg text-display-lg text-on-surface tracking-tight">100%</span>
+              <span class="font-display-lg text-display-lg text-on-surface tracking-tight" data-counter="100" data-suffix="%">100%</span>
               <span class="font-title-md text-title-md text-on-surface mb-space-xs">Atención Personalizada y
                 Directa</span>
               <p class="font-body-sm text-body-sm text-on-surface-variant">Gestión transparente de trámites
                 previsionales, impositivos y litigios sin intermediarios.</p>
             </div>
-            <div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+            <div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between reveal-on-scroll stagger-3 card-interactive">
               <div class="flex items-center justify-between mb-space-sm">
                 <span class="font-label-md text-label-md uppercase tracking-wider text-primary">Clientes
                   Asesorados</span>
                 <span class="material-symbols-outlined text-primary text-[24px]">domain</span>
               </div>
-              <span class="font-display-lg text-display-lg text-on-surface tracking-tight">+500</span>
+              <span class="font-display-lg text-display-lg text-on-surface tracking-tight" data-counter="500" data-prefix="+">+500</span>
               <span class="font-title-md text-title-md text-on-surface mb-space-xs">Casos y Consultas Resueltas</span>
               <p class="font-body-sm text-body-sm text-on-surface-variant">Familias, comerciantes y profesionales de
                 Villa Mercedes y la provincia de San Luis.</p>
@@ -241,7 +411,7 @@
       <!-- SECTION 2: Sinergia Dual (Contable + Jurídica) -->
       <section class="w-full bg-surface-container-low py-space-xl lg:py-24">
         <div class="max-w-[1320px] mx-auto px-gutter-mobile md:px-margin">
-          <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md reveal-on-scroll">
             <div class="max-w-2xl">
               <div class="inline-flex items-center gap-space-sm mb-space-xs">
                 <span class="font-label-md text-label-md uppercase tracking-widest text-primary">Nuestra Propuesta de
@@ -259,7 +429,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter items-stretch">
             <!-- Tarjeta Jurídica y Previsional -->
             <div
-              class="rounded-xl bg-surface-container-lowest p-space-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              class="rounded-xl bg-surface-container-lowest p-space-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow reveal-on-scroll stagger-1 card-interactive">
               <div>
                 <div
                   class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-space-lg">
@@ -297,7 +467,7 @@
             </div>
             <!-- Tarjeta Centro: Servicio Integral (Destaque Principal) -->
             <div
-              class="rounded-xl bg-inverse-surface text-inverse-on-surface p-space-xl shadow-xl flex flex-col justify-between relative overflow-hidden">
+              class="rounded-xl bg-inverse-surface text-inverse-on-surface p-space-xl shadow-xl flex flex-col justify-between relative overflow-hidden reveal-on-scroll stagger-2 card-interactive">
               <div
                 class="absolute top-0 right-0 w-36 h-36 bg-primary-container/20 rounded-full blur-2xl pointer-events-none">
               </div>
@@ -337,7 +507,7 @@
                 </div>
               </div>
               <div class="pt-space-md">
-                <a class="w-full inline-flex items-center justify-center px-space-md py-space-sm rounded-lg bg-primary-fixed text-on-primary-fixed font-title-md text-title-md hover:bg-surface-bright transition-colors"
+                <a class="w-full inline-flex items-center justify-center px-space-md py-space-sm rounded-lg bg-primary-fixed text-on-primary-fixed font-title-md text-title-md hover:bg-surface-bright transition-colors btn-shimmer"
                   href="contacto.html">
                   <span>Agendar Consulta</span>
                 </a>
@@ -345,7 +515,7 @@
             </div>
             <!-- Tarjeta Contable -->
             <div
-              class="rounded-xl bg-surface-container-lowest p-space-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              class="rounded-xl bg-surface-container-lowest p-space-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow reveal-on-scroll stagger-3 card-interactive">
               <div>
                 <div
                   class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-space-lg">
@@ -387,7 +557,7 @@
       <!-- SECTION 3: Resumen de Áreas de Práctica -->
       <section class="w-full bg-surface py-space-xl lg:py-24" id="areas-practica">
         <div class="max-w-[1320px] mx-auto px-gutter-mobile md:px-margin">
-          <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl reveal-on-scroll">
             <div>
               <span
                 class="font-label-md text-label-md uppercase tracking-widest text-primary block mb-space-xs">Nuestras
@@ -403,7 +573,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
             <!-- Practice 2 -->
             <div
-              class="group p-space-xl rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+              class="group p-space-xl rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between reveal-on-scroll stagger-1 card-interactive">
               <div>
                 <div class="flex items-center justify-between mb-space-md">
                   <span
@@ -428,7 +598,7 @@
             </div>
             <!-- Practice 3 -->
             <div
-              class="group p-space-xl rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+              class="group p-space-xl rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between reveal-on-scroll stagger-2 card-interactive">
               <div>
                 <div class="flex items-center justify-between mb-space-md">
                   <span
@@ -453,7 +623,7 @@
             </div>
             <!-- Practice 4 -->
             <div
-              class="group p-space-xl rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+              class="group p-space-xl rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between reveal-on-scroll stagger-3 card-interactive">
               <div>
                 <div class="flex items-center justify-between mb-space-md">
                   <span
@@ -482,7 +652,7 @@
       <!-- SECTION 4: Testimonios / Casos de Confianza Institucional -->
       <section class="w-full bg-surface-container-low py-space-xl lg:py-24">
         <div class="max-w-[1320px] mx-auto px-gutter-mobile md:px-margin">
-          <div class="max-w-2xl mb-space-xl">
+          <div class="max-w-2xl mb-space-xl reveal-on-scroll">
             <span
               class="font-label-md text-label-md uppercase tracking-widest text-primary block mb-space-xs">Testimonios</span>
             <h2 class="font-headline-lg text-headline-lg text-on-surface">La Confianza de Quienes Nos Eligen</h2>
@@ -493,7 +663,7 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
             <!-- Testimonial 1 -->
-            <div class="p-space-xl rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+            <div class="p-space-xl rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between reveal-on-scroll stagger-1 card-interactive">
               <div>
                 <div class="flex items-center gap-1 text-primary mb-space-md">
                   <span class="material-symbols-outlined text-[18px]"
@@ -526,7 +696,7 @@
               </div>
             </div>
             <!-- Testimonial 2 -->
-            <div class="p-space-xl rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+            <div class="p-space-xl rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between reveal-on-scroll stagger-2 card-interactive">
               <div>
                 <div class="flex items-center gap-1 text-primary mb-space-md">
                   <span class="material-symbols-outlined text-[18px]"
@@ -558,7 +728,7 @@
               </div>
             </div>
             <!-- Testimonial 3 -->
-            <div class="p-space-xl rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+            <div class="p-space-xl rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between reveal-on-scroll stagger-3 card-interactive">
               <div>
                 <div class="flex items-center gap-1 text-primary mb-space-md">
                   <span class="material-symbols-outlined text-[18px]"
@@ -592,7 +762,7 @@
             </div>
           </div>
           <!-- Nuestro Compromiso -->
-          <div class="mt-space-xl mb-space-xl max-w-2xl">
+          <div class="mt-space-xl mb-space-xl max-w-2xl reveal-on-scroll">
             <span class="font-label-md text-label-md uppercase tracking-widest text-primary block mb-space-xs">Nuestro
               Compromiso</span>
             <h3 class="font-headline-md text-headline-md text-on-surface">Principios que Guían Nuestra Práctica</h3>
@@ -602,7 +772,7 @@
           </div>
           <!-- Trust Metrics Inline Strip -->
           <div
-            class="p-space-lg rounded-xl bg-surface-container grid grid-cols-1 md:grid-cols-3 gap-gutter items-start">
+            class="p-space-lg rounded-xl bg-surface-container grid grid-cols-1 md:grid-cols-3 gap-gutter items-start reveal-on-scroll stagger-2">
             <div class="flex items-start gap-space-sm min-w-0">
               <span class="material-symbols-outlined text-primary text-[28px]">lock</span>
               <div class="flex flex-col">
@@ -635,7 +805,7 @@
       <section class="w-full bg-surface py-space-xl lg:py-24">
         <div class="max-w-[1320px] mx-auto px-gutter-mobile md:px-margin">
           <div
-            class="relative rounded-2xl bg-inverse-surface text-inverse-on-surface p-space-xl lg:p-20 overflow-hidden shadow-2xl">
+            class="relative rounded-2xl bg-inverse-surface text-inverse-on-surface p-space-xl lg:p-20 overflow-hidden shadow-2xl reveal-on-scroll">
             <!-- Decorative subtle background accents -->
             <div
               class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-primary-container/20 blur-3xl pointer-events-none">
@@ -655,7 +825,7 @@
                 legal de forma clara y confidencial.
               </p>
               <div class="flex flex-wrap items-center gap-space-md">
-                <a class="inline-flex items-center justify-center px-space-xl py-space-md rounded-lg bg-primary text-on-primary font-title-md text-title-md shadow-lg hover:bg-tertiary transition-all duration-300"
+                <a class="inline-flex items-center justify-center px-space-xl py-space-md rounded-lg bg-primary text-on-primary font-title-md text-title-md shadow-lg hover:bg-tertiary transition-all duration-300 btn-shimmer"
                   href="contacto.html">
                   <span>Coordinar Consulta</span>
                   <span class="material-symbols-outlined ml-space-sm text-[20px]">calendar_today</span>
@@ -675,7 +845,7 @@
         </div>
       </section>
       <section class="w-full max-w-[1320px] mx-auto px-gutter-mobile md:px-margin py-space-xl" id="equipo">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl reveal-on-scroll">
           <div>
             <div class="inline-flex items-center gap-space-xs text-primary mb-space-xs">
               <span class="material-symbols-outlined text-[18px]">gavel</span>
@@ -691,7 +861,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter items-stretch">
           <!-- Partner 1: Dra. Rivas -->
           <article
-            class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all duration-300 group">
+            class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all duration-300 group reveal-on-scroll stagger-1 card-interactive">
             <div>
               <div class="relative h-80 overflow-hidden bg-surface-container">
                 <img
@@ -761,7 +931,7 @@
           </article>
           <!-- Partner 2: Cra. González -->
           <article
-            class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all duration-300 group">
+            class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all duration-300 group reveal-on-scroll stagger-2 card-interactive">
             <div>
               <div class="relative h-80 overflow-hidden bg-surface-container">
                 <img
@@ -830,7 +1000,7 @@
           </article>
           <!-- Partner 3: Cra. Methol -->
           <article
-            class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all duration-300 group">
+            class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all duration-300 group reveal-on-scroll stagger-3 card-interactive">
             <div>
               <div class="relative h-80 overflow-hidden bg-surface-container">
                 <img
@@ -902,7 +1072,7 @@
       <section class="w-full bg-surface-container-low py-space-xl my-space-lg" id="equipo-sinergia">
         <div class="max-w-[1320px] mx-auto px-gutter-mobile md:px-margin">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
-            <div class="lg:col-span-5 flex flex-col gap-space-sm">
+            <div class="lg:col-span-5 flex flex-col gap-space-sm reveal-on-scroll">
               <span class="font-label-md text-label-md uppercase tracking-widest text-primary">Trabajo en Equipo</span>
               <h2 class="font-headline-md text-headline-md text-on-surface font-serif">
                 ¿Por qué elegir un servicio contable, jurídico y previsional integrado?
@@ -929,7 +1099,7 @@
                 </div>
               </div>
             </div>
-            <div class="lg:col-span-7 bg-surface p-space-lg rounded-xl shadow-md">
+            <div class="lg:col-span-7 bg-surface p-space-lg rounded-xl shadow-md reveal-on-scroll stagger-2 card-interactive">
               <div class="flex items-center justify-between mb-space-md">
                 <span class="font-title-md text-title-md text-on-surface">Distribución de Servicios del Estudio</span>
                 <span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Áreas de
@@ -1001,7 +1171,7 @@
       </section>
       <section class="w-full max-w-[1320px] mx-auto px-gutter-mobile md:px-margin pb-space-xl" id="equipo-cta">
         <div
-          class="bg-inverse-surface rounded-xl p-space-xl text-inverse-on-surface flex flex-col lg:flex-row items-center justify-between gap-space-lg shadow-xl relative overflow-hidden">
+          class="bg-inverse-surface rounded-xl p-space-xl text-inverse-on-surface flex flex-col lg:flex-row items-center justify-between gap-space-lg shadow-xl relative overflow-hidden reveal-on-scroll">
           <div
             class="absolute -right-12 -bottom-12 w-64 h-64 bg-primary-container/20 rounded-full blur-2xl pointer-events-none">
           </div>
@@ -1018,7 +1188,7 @@
             </p>
           </div>
           <div class="flex flex-col sm:flex-row items-center gap-space-md shrink-0 relative z-10 w-full sm:w-auto">
-            <a class="w-full sm:w-auto px-space-xl py-space-md rounded-lg bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-wider text-center hover:bg-primary-container transition-colors shadow-sm"
+            <a class="w-full sm:w-auto px-space-xl py-space-md rounded-lg bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-wider text-center hover:bg-primary-container transition-colors shadow-sm btn-shimmer"
               href="contacto.html">
               Solicitar Consulta
             </a>
@@ -1030,7 +1200,7 @@
         </div>
       </section>
       <section
-        class="w-full max-w-3xl mx-auto bg-surface-container-lowest border border-outline-variant/50 p-space-lg md:p-space-xl rounded-xl shadow-md flex flex-col"
+        class="w-full max-w-3xl mx-auto bg-surface-container-lowest border border-outline-variant/50 p-space-lg md:p-space-xl rounded-xl shadow-md flex flex-col reveal-on-scroll card-interactive"
         id="contacto">
         <div
           class="flex items-center justify-between pb-space-md mb-space-lg bg-surface-container-low/60 -mx-space-lg md:-mx-space-xl px-space-lg md:px-space-xl -mt-space-lg md:-mt-space-xl pt-space-lg rounded-t-xl">
@@ -1117,7 +1287,7 @@
               <span class="font-body-sm text-body-sm">Cifrado de grado institucional 256-bit</span>
             </div>
             <button
-              class="w-full sm:w-auto inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all duration-300 font-label-lg text-label-lg uppercase tracking-widest shadow-md"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all duration-300 font-label-lg text-label-lg uppercase tracking-widest shadow-md btn-shimmer"
               id="submitBtn" type="submit">
               <span>Enviar Solicitud de Asesoramiento</span>
               <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
@@ -1193,7 +1363,7 @@
         </div>
       </section>
       <section class="mt-space-xl pt-space-lg mb-space-xl" id="compromiso-etico">
-        <div class="bg-surface-container-high rounded-xl p-space-lg md:p-space-xl relative overflow-hidden">
+        <div class="bg-surface-container-high rounded-xl p-space-lg md:p-space-xl relative overflow-hidden reveal-on-scroll card-interactive">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center relative z-10">
             <div class="lg:col-span-8 flex flex-col gap-space-sm">
               <div class="flex items-center gap-space-xs text-primary">
@@ -1318,13 +1488,14 @@
           target="_blank" rel="noopener noreferrer">GURUWEB</a></div>
     </div>
   </footer>
-  <!-- Botón flotante de WhatsApp -->
+  <!-- Botón flotante de WhatsApp con pulso animado -->
   <a
     aria-label="Contactar por WhatsApp al +54 9 2657 77-1707"
     class="fixed bottom-7 right-7 z-[999] flex items-center justify-center w-[3.25rem] h-[3.25rem] rounded-full bg-[#25d366] text-white shadow-[0_4px_16px_rgba(37,211,102,0.45)] transition-transform duration-200 ease-out hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 motion-reduce:transition-none"
     href="https://wa.me/5492657771707?text=Hola%2C%20necesito%20informaci%C3%B3n%20sobre%20sus%20servicios%20contables%2C%20jur%C3%ADdicos%20o%20previsionales."
     rel="noopener noreferrer" target="_blank">
-    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 32 32">
+    <span class="wa-pulse-ring"></span>
+    <svg aria-hidden="true" class="w-6 h-6 relative z-10" fill="currentColor" viewBox="0 0 32 32">
       <path
         d="M16 0C7.163 0 0 7.163 0 16c0 2.822.737 5.469 2.027 7.77L0 32l8.468-2.001A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.771-1.849l-.485-.288-5.027 1.188 1.215-4.893-.317-.502A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.878c-.398-.199-2.355-1.162-2.72-1.294-.365-.133-.631-.199-.897.199-.265.398-1.029 1.294-1.261 1.56-.232.265-.465.298-.863.1-.398-.2-1.681-.619-3.203-1.977-1.184-1.057-1.983-2.362-2.215-2.76-.232-.398-.025-.613.174-.811.179-.178.398-.465.597-.698.199-.232.265-.398.398-.664.133-.265.066-.498-.033-.697-.1-.199-.897-2.162-1.229-2.96-.324-.778-.653-.672-.897-.685l-.765-.013c-.265 0-.697.1-.1063.498-.365.398-1.395 1.362-1.395 3.322s1.428 3.853 1.627 4.119c.199.265 2.811 4.292 6.814 6.02.953.411 1.697.657 2.277.841.957.304 1.828.261 2.516.158.767-.114 2.355-.963 2.688-1.893.332-.93.332-1.727.232-1.893-.1-.166-.365-.265-.763-.464z">
       </path>
@@ -1346,6 +1517,99 @@
         }, 1200);
       }
     }
+  </script>
+  <!-- Efectos de Scroll Reveal, Contadores Dinámicos y Header Interactivo -->
+  <script>
+    (function () {
+      "use strict";
+
+      // 1. Animación suave de contadores numéricos
+      function animateCounter(el) {
+        if (el.dataset.counterAnimated) return;
+        el.dataset.counterAnimated = "true";
+
+        var target = parseFloat(el.getAttribute('data-counter')) || 0;
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        var duration = 1600;
+        var startTime = null;
+
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var elapsed = timestamp - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          var currentVal = Math.round(easeOutCubic(progress) * target);
+          el.textContent = prefix + currentVal + suffix;
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          } else {
+            el.textContent = prefix + target + suffix;
+          }
+        }
+
+        window.requestAnimationFrame(step);
+      }
+
+      // 2. IntersectionObserver para Scroll Reveal y Activación de Contadores
+      var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var reveals = document.querySelectorAll('.reveal-on-scroll');
+      var counters = document.querySelectorAll('[data-counter]');
+
+      if (prefersReduced || !('IntersectionObserver' in window)) {
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+        counters.forEach(function (el) {
+          var target = el.getAttribute('data-counter') || '';
+          var prefix = el.getAttribute('data-prefix') || '';
+          var suffix = el.getAttribute('data-suffix') || '';
+          el.textContent = prefix + target + suffix;
+        });
+      } else {
+        var observer = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              
+              if (entry.target.hasAttribute('data-counter')) {
+                animateCounter(entry.target);
+              } else {
+                var nestedCounters = entry.target.querySelectorAll('[data-counter]');
+                nestedCounters.forEach(animateCounter);
+              }
+              obs.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        reveals.forEach(function (el) { observer.observe(el); });
+
+        counters.forEach(function (el) {
+          if (!el.closest('.reveal-on-scroll')) {
+            observer.observe(el);
+          }
+        });
+      }
+
+      // 3. Header dinámico con sombra y borde sutil al scrollear
+      var header = document.querySelector('header');
+      if (header) {
+        function checkScroll() {
+          if (window.scrollY > 15) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+        }
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        checkScroll();
+      }
+    })();
   </script>
 </body>
 
